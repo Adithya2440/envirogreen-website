@@ -1,65 +1,99 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Navbar from "../src/components/Navbar";
+import Hero from "../src/components/Hero";
+import TrustHighlights from "../src/components/TrustHighlights";
+import ServicesSection from "../src/components/Services";
+import ServiceAreasSection from "../src/components/ServiceAreasSection";
+import WhyChooseUs from "../src/components/WhyChooseUs";
+import Testimonials from "../src/components/Testimonials";
+import ContactStrip from "../src/components/ContactStrip";
+import Footer from "../src/components/Footer";
+import Reveal from "../src/components/Reveal";
 
+export const metadata: Metadata = {
+  title: "Pest Control in Burnaby, Surrey & Vancouver",
+  description:
+    "Professional pest control in Burnaby, Surrey, Vancouver, and surrounding areas. Eco-friendly solutions for ants, rodents, bed bugs, cockroaches, wasps, and more.",
+};
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "EnviroGreen Pest Solutions",
+  url: "https://www.envirogreenpest.com",
+  telephone: "+1-604-355-8550",
+  email: "info@envirogreenpest.com",
+  areaServed: [
+    "Burnaby",
+    "Surrey",
+    "Vancouver",
+    "New Westminster",
+    "Coquitlam",
+    "Langley",
+    "Abbotsford",
+    "Chilliwack",
+  ],
+  openingHours: "Mo-Sa 06:00-21:00",
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "12-7549 Humphries Court",
+      addressLocality: "Burnaby",
+      addressRegion: "BC",
+      postalCode: "V3N 4K9",
+      addressCountry: "CA",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "10603 140 St",
+      addressLocality: "Surrey",
+      addressRegion: "BC",
+      postalCode: "V3T 4N6",
+      addressCountry: "CA",
+    },
+  ],
+};
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="min-h-screen bg-[#f5f5f5] px-4 py-8 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[22px] bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)]">
+        <Navbar />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <Reveal>
+          <Hero />
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <TrustHighlights />
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <ServicesSection />
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <ServiceAreasSection />
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <WhyChooseUs />
+        </Reveal>
+
+        <Reveal delay={0.25}>
+          <Testimonials />
+        </Reveal>
+
+        <Reveal delay={0.3}>
+          <ContactStrip />
+        </Reveal>
+
+        <Footer />
+      </div>
+    </main>
   );
 }
