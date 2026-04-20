@@ -1,33 +1,30 @@
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    const { fullName, email, phone, message } = body;
 
-    const { name, email, phone, message } = body;
+    await resend.emails.send({
+      from: "Website Inquiry <onboarding@resend.dev>",
+      to: ["customersupport@envirogreenpest.ca"], // CLIENT EMAIL
+      replyTo: email,
+      subject: "New Website Inquiry",
+      html: `
+        <h2>New Contact Request</h2>
+        <p><b>Name:</b> ${fullName}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Message:</b> ${message}</p>
+      `,
+    });
 
-    // Log form data (for now)
-    console.log("Form submission received:");
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Phone:", phone);
-    console.log("Message:", message);
-
-    // TEMP response (no email sending yet)
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "Form submitted successfully",
-      }),
-      { status: 200 },
-    );
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error("Error handling form:", error);
+    console.error("Email error:", error);
 
-    return new Response(
-      JSON.stringify({
-        success: false,
-        message: "Something went wrong",
-      }),
-      { status: 500 },
-    );
+    return new Response(JSON.stringify({ success: false }), { status: 500 });
   }
 }
