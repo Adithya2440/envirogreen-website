@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Website Inquiry <onboarding@resend.dev>",
-      to: ["customersupport@envirogreenpest.ca"], // CLIENT EMAIL
+      to: ["customersupport@envirogreenpest.com"],
       replyTo: email,
       subject: "New Website Inquiry",
       html: `
@@ -23,8 +23,7 @@ export async function POST(req: Request) {
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    console.error("Email error:", error);
-
+    console.error(error);
     return new Response(JSON.stringify({ success: false }), { status: 500 });
   }
 }
