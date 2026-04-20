@@ -1,39 +1,32 @@
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+
     const { name, email, phone, message } = body;
 
-    console.log("API called with:", { name, email, phone, message });
-    console.log("RESEND key exists:", !!process.env.RESEND_API_KEY);
+    // Log form data (for now)
+    console.log("Form submission received:");
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Phone:", phone);
+    console.log("Message:", message);
 
-    const data = await resend.emails.send({
-      from: "Website Form <onboarding@resend.dev>",
-      to: ["bharathsg99@gmail.com"],
-      replyTo: email,
-      subject: "New Website Inquiry",
-      html: `
-        <h2>New Contact Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    });
-
-    console.log("Resend success:", data);
-
-    return Response.json({ success: true, data });
+    // TEMP response (no email sending yet)
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: "Form submitted successfully",
+      }),
+      { status: 200 },
+    );
   } catch (error) {
-    console.error("Resend error:", error);
-    return Response.json(
-      {
+    console.error("Error handling form:", error);
+
+    return new Response(
+      JSON.stringify({
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
-      },
+        message: "Something went wrong",
+      }),
       { status: 500 },
     );
   }
