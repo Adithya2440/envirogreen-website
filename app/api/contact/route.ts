@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     const data = await resend.emails.send({
       from: "Website Inquiry <onboarding@resend.dev>",
-      to: ["adith2440@gmail.com"], // for testing only
+      to: ["customersupport@envirogreenpest.ca"], // for testing only
       replyTo: email,
       subject: "New Website Inquiry",
       html: `
