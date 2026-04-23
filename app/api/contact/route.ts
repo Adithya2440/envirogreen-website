@@ -7,12 +7,12 @@ export async function POST(req: Request) {
     const { name, email, phone, message } = await req.json();
 
     const msg = {
-      to: "akasuki5953@gmail.com", // client email
-      from: "ADHI <akasuki5953@gmail.com>", // MUST be verified
+      to: "customersupport@envirogreenpest.ca", // client email
+      from: "New customer info <customersupport@envirogreenpest.ca>", // MUST be verified
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
-        <h2>New Contact Request</h2>
+        <h2>New Customer Inquiry from Website</h2>
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
         <p><b>Phone:</b> ${phone || "Not provided"}</p>
