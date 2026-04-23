@@ -1,48 +1,52 @@
 import { Resend } from "resend";
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export async function POST(req: Request) {
   try {
-    const resendApiKey = process.env.RESEND_API_KEY;
+    const body = await req.json();
+    const { name, email, phone, message } = body;
 
-    if (!resendApiKey) {
-      return new Response(
-        JSON.stringify({
+    if (!name || !email || !message) {
+      return Response.json(
+        {
           success: false,
-          error: "Missing RESEND_API_KEY",
-        }),
-        { status: 500 },
+          error: "Name, email, and message are required.",
+        },
+        { status: 400 },
       );
     }
 
-    const resend = new Resend(resendApiKey);
-
-    const body = await req.json();
-    const { name, fullName, email, phone, message } = body;
-    const senderName = fullName || name || "";
-
     const data = await resend.emails.send({
-      from: "Website Inquiry <noreply@envirogreenpest.com>", // ✅ FIXED
-      to: ["adith2440@gmail.com"], // ✅ TEMP TEST
+      from: "Website Contact <noreply@envirogreenpest.com>",
+      to: ["adith2440@gmail.com"],
       replyTo: email,
-      subject: "New Website Inquiry",
+      subject: `New Website Contact Form Submission from ${name}`,
       html: `
-        <h2>New Contact Request</h2>
-        <p><b>Name:</b> ${senderName}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone}</p>
-        <p><b>Message:</b> ${message}</p>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        </div>
       `,
     });
 
-    return new Response(JSON.stringify({ success: true, data }), {
-      status: 200,
+    return Response.json({
+      success: true,
+      message: "Email sent successfully.",
+      data,
     });
   } catch (error) {
-    return new Response(
-      JSON.stringify({
+    console.error("Resend error:", error);
+
+    return Response.json(
+      {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
-      }),
+        error: "Something went wrong while sending the email.",
+      },
       { status: 500 },
     );
   }
