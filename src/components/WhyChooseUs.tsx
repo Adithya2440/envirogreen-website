@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
           className="relative h-[340px] overflow-hidden rounded-[10px] md:h-[420px]"
         >
           <Image
-            src="/technician-placeholder.jpg"
+            src="/technician.jpg"
             alt="Professional pest control technician providing service in Burnaby and Surrey"
             fill
             className="object-cover transition duration-700 hover:scale-105"
