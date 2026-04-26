@@ -31,7 +31,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.1 }}
             className="mt-4 text-[40px] font-semibold leading-[1.05] tracking-[-0.03em] text-black md:text-[52px] lg:text-[64px]"
           >
-            Pest Control in Burnaby, Surrey & Vancouver — Fast & Reliable
+            Pest Control in Metro Vancouver and Fraser Valley — Fast & Reliable
           </motion.h1>
 
           <motion.p

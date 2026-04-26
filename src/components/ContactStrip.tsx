@@ -65,7 +65,7 @@ export default function ContactStrip() {
             </div>
           </div>
 
-          <div className="rounded-[20px] border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
+          {/*<div className="rounded-[20px] border border-white/15 bg-white/10 p-5 backdrop-blur-sm">
             <h3 className="text-[18px] font-semibold">Our Locations</h3>
             <div className="mt-3 space-y-3 text-[15px] text-white/85">
               <a
@@ -83,10 +83,10 @@ export default function ContactStrip() {
                 rel="noopener noreferrer"
                 className="block underline underline-offset-4 transition hover:text-white"
               >
-                10603 140 St, Surrey, BC V3T 4N6
+                10603 140 St, Surrey, BC V3T 4N6 
               </a>
             </div>
-          </div>
+          </div>*/}
         </motion.div>
       </div>
     </section>

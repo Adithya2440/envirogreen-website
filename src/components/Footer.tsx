@@ -60,16 +60,36 @@ export default function Footer() {
         <div>
           <h4 className="text-[18px] font-semibold text-black">Follow Us</h4>
           <ul className="mt-5 space-y-3 text-[15px] text-[#5f5f5f]">
-            {["Facebook", "Instagram", "LinkedIn"].map((item) => (
-              <li key={item}>
-                <a
-                  href="#"
-                  className="inline-block transition duration-300 hover:translate-x-1 hover:text-[var(--primary-green)]"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a
+                href="https://www.facebook.com/share/18WGQTq9Cz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition duration-300 hover:translate-x-1 hover:text-[var(--primary-green)]"
+              >
+                Facebook
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.instagram.com/envirogreenpest?igsh=amVxbDdtdnprODll"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition duration-300 hover:translate-x-1 hover:text-[var(--primary-green)]"
+              >
+                Instagram
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#"
+                className="inline-block transition duration-300 hover:translate-x-1 hover:text-[var(--primary-green)]"
+              >
+                LinkedIn
+              </a>
+            </li>
           </ul>
         </div>
       </div>

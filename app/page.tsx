@@ -11,7 +11,7 @@ import Footer from "../src/components/Footer";
 import Reveal from "../src/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Pest Control in Burnaby, Surrey & Vancouver",
+  title: "Pest Control in Metro-Vancouver and Fraser Valley",
   description:
     "Professional pest control in Burnaby, Surrey, Vancouver, and surrounding areas. Eco-friendly solutions for ants, rodents, bed bugs, cockroaches, wasps, and more.",
 };
