@@ -48,7 +48,7 @@ export default function ContactHero() {
           transition={{ duration: 0.85, delay: 0.08 }}
           className="mt-3 text-[34px] font-bold text-[#1f5f4b] md:text-[42px] lg:text-[52px]"
         >
-          Contact Pest Control Experts in Burnaby, Surrey & Vancouver
+          Contact Pest Control Experts in Metro Vancouver and Burnaby
         </motion.h1>
 
         <motion.p
